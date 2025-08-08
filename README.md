@@ -1,5 +1,7 @@
 # KeySolve-ru
 
+![Keysolve](keysolve.png)
+
 I have added some metrics so that [KeySolve](https://grassfedreeve.github.io/keysolve-web/) can be used to evaluate a selection of Russian keyboard layouts. The editing feature has been removed and the board style has been changed to US ANSI row-staggered only. (It was necessary to have rows of varying lengths and this did not work with the existing HTML/CSS/JS.)
 
 Traditional touch-typing technique is assumed (that is, `ZXCV` are all struck with different left-hand fingers).
