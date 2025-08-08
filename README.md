@@ -18,72 +18,97 @@ You can hover over any of the metrics to see the key combinations that pertain t
 
 ## Metric Classes
 
-**Bigrams**  
+### Bigrams
+
 A bigram is a pattern of two letters that occur next to each other. All bigram metrics have the letter `B` at the end of their abbreviation.
+
 - The word `the` has two bigrams: `th` and `he`.
 
-**Skipgrams**  
+### Skipgrams
+
 A skipgram is a pattern of two letters that are separated by any other letter. All skipgram metrics have the letter `S` at the end of their abbreviation.
+
 - The word `the` has only one skipgram: `te`.
 
-**Trigrams**  
-A trigram is a pattern of three letters that occur next to each other. 
+### Trigrams
+
+A trigram is a pattern of three letters that occur next to each other.
+
 - The word `the` has only one trigram: `the`.
 
 ## Bigram Types
 
-**SF (Same Finger)**  
+### SF (Same Finger)
+
 SFs are patterns that involve using the same finger twice to hit both letters. These sequences are generally very slow and should be minimized as much as possible.
+
 - On QWERTY, `ed` is a very common SFB.
 
-**DP (Center Column)**
+### DP (Center Column)
+
 *Added*: These are any index finger SFBs where one or both keys is in the center column. These are not deducted from the total SFB count.
+
 - On QWERTY, `rt` and `ny` are examples of CCBs.
 
-**DP (Double Pinky)**
+### DP (Double Pinky)
+
 *Added*: These are not deducted from the total SFB count.
+
 - QWERTY has none, but on the standard Russian layout, `зж` corresponds to `p:`, which is a DPB.
 
 **LS (Lateral Stretch)**  
 Lateral stretches are patterns that involve reaches into the outer index column with the index followed or preceded by middle finger use.
+
 - On QWERTY, `et`, `ct`, and 'eg` are all examples of LSBs.
 
 *Added*: RH hand center column + pinky column and ring column + non-adjacent pinky column.
 
-**HS (Half-Scissor)**  
+### HS (Half-Scissor)
+
 A half-scissor is a pattern where one finger needs to stretch or contract to press a key on the top or bottom row and another finger on the same hand stays on the homerow - but the finger that is on the lower of the two rows is either middle or ring.
+
 - `ok`, `sc`, and `rd` are common examples of half-scissors on QWERTY.
 
 *Added*: LH index-middle combinations `fc` and `gc`, which don't occur in English (except compound words).
 
-**WP (Winged Pinky)**
+### WP (Winged Pinky)
+
 *Added*: This is a pattern where the ring finger hits a key and the pinky hits a key on the row above, or the pinky hits a key and the ring finger hits a key on the row below.
+
 - `sq`, `ax`, and `pl` are all examples of winged-pinky patterns on QWERTY.
 
+### FS (Full-Scissor)
 
-**FS (Full-Scissor)**  
 A full-scissor is a pattern where one finger needs to reach to the top row and another finger on the same hand needs to contract to hit the bottom row - but the finger that is on the lower of two rows is either middle or ring.
+
 - `cr`, `ex`, `xt` are all FSBs on QWERTY.
 
 *Added*: LH index-middle combinations `rc` and `tc`.
 
-**FWP (Full Winged Pinky)**
+### FWP (Full Winged Pinky)
+
 *Added*: This is a pattern where the ring finger hits a key and the pinky hits a key two or more rows above, or the pinky hits a key and the ring finger hits a key two or more rows below.
 
 - `p.` is an example of this pattern on QWERTY.
 
 ## Trigram Types
 
-**ALT (Alternation)**  
+### ALT (Alternation)
+
 An alternation sequence is when hand use alternates over three consecutive keypresses - either Left-Right-Left or Right-Left-Right.
 
-**ROL (Roll)**  
+### ROL (Roll)
+
 A roll is when one hand presses two keys consecutively and is followed or preceded by a keypress on the other hand - either Left-Left-Right, Left-Right-Right, Right-Left-Left, or Right-Right-Left.
 
-**ONE (Onehand)**  
+### ONE (Onehand)
+
 A onehand is when all three keypresses are pressed on the same hand, and in an order from left to right or right to left.
+
 - `asd`, `sdf`, and `fds` are all onehands on QWERTY.
 
-**RED (Redirect)**  
+### RED (Redirect)
+
 A redirect is when all three keypresses are pressed on the same hand but don't occur in a smooth order.
+
 - `sea`, `sca`, and `rse` are all redirects on QWERTY.
