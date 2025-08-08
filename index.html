@@ -4,144 +4,101 @@
 <head>
     <meta charset="UTF-8">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link href="https://iosevka-webfonts.github.io/iosevka/Iosevka.css" rel="stylesheet" />
     
     <link rel="stylesheet" href="styles/main.css">
-    <link id="theme" rel="stylesheet" href="themes/synthwave.css">
+    <script src="https://cdn.jsdelivr.net/npm/chroma-js@2.4.2/chroma.min.js"></script>
     <script type="module" src="js/main.js"></script>
     
-    <link id="repeatmap" rel="stylesheet" href="heatmaps/repeat.css" disabled>
-    
-    <!-- 3rd party scripts -->
-    <script id="DragDropTouch" src="https://bernardo-castilho.github.io/DragDropTouch/DragDropTouch.js"></script>
-    <script src="https://kit.fontawesome.com/7cc1d241a9.js" crossorigin="anonymous"></script>
-    
-    <title>KeySolve</title>
+    <title>Клаворешалка</title>
 </head>
 
 <body>
     <div id="canvas">
+        <div id="layout-selector">
+            
+        </div>
         <div class="box">
-            <div id="search-wrapper">
-                <input id="search" class="center" autocomplete="off" value="Colemak">
-                <div id="complete" class="center"></div>
-            </div>
-            <div id="grid">
-                <div draggable="true" class="cell center Q">Q</div>
-                <div draggable="true" class="cell center W">W</div>
-                <div draggable="true" class="cell center F">F</div>
-                <div draggable="true" class="cell center P">P</div>
-                <div draggable="true" class="cell center G">G</div>
-                <div draggable="true" class="cell center J">J</div>
-                <div draggable="true" class="cell center L">L</div>
-                <div draggable="true" class="cell center U">U</div>
-                <div draggable="true" class="cell center Y">Y</div>
-                <div draggable="true" class="cell center ;">;</div>
-                <div draggable="true" class="cell center A">A</div>
-                <div draggable="true" class="cell center R">R</div>
-                <div draggable="true" class="cell center S">S</div>
-                <div draggable="true" class="cell center T">T</div>
-                <div draggable="true" class="cell center D">D</div>
-                <div draggable="true" class="cell center H">H</div>
-                <div draggable="true" class="cell center N">N</div>
-                <div draggable="true" class="cell center E">E</div>
-                <div draggable="true" class="cell center I">I</div>
-                <div draggable="true" class="cell center O">O</div>
-                <div draggable="true" class="cell center Z">Z</div>
-                <div draggable="true" class="cell center X">X</div>
-                <div draggable="true" class="cell center C">C</div>
-                <div draggable="true" class="cell center V">V</div>
-                <div draggable="true" class="cell center B">B</div>
-                <div draggable="true" class="cell center K">K</div>
-                <div draggable="true" class="cell center M">M</div>
-                <div draggable="true" class="cell center ,">,</div>
-                <div draggable="true" class="cell center .">.</div>
-                <div draggable="true" class="cell center '">'</div>
+            <div id="kbd">
+                
             </div>
         </div>
-        <div id="table-wrapper" class="box center">
+        <div id="stat-tooltip" style="display:none; position:absolute;" class="tooltip box small center"></div>
+        <div class="box center">
             <table id="ngrams">
                 <tbody>
                     <tr>
                         <td>BIGRAMS</td>
-                        <td id="SFB" style="background: var(--color-2);">SFB: 1.50%</td>
-                        <td id="LSB" style="background: var(--color-1);">LSB: 3.84%</td>
-                        <td id="HSB" style="background: var(--color-2);">HSB: 6.07%</td>
-                        <td id="FSB" style="background: var(--color-3);">FSB: 0.37%</td>
+                        <td id="SFB"></td>
+                        <td id="CCB"></td>
+                        <td id="DPB"></td>
+                        <td id="LSB"></td>
+                        <td id="HSB"></td>
+                        <td id="WPB"></td>
+                        <td id="FSB"></td>
+                        <td id="FWPB"></td>
                     </tr>
                     <tr>
                         <td>SKIPGRAMS</td>
-                        <td id="SFS" style="background: var(--color-1);">SFS: 8.17%</td>
-                        <td id="LSS" style="background: var(--color-2);">LSS: 2.59%</td>
-                        <td id="HSS" style="background: var(--color-4);">HSS: 6.49%</td>
-                        <td id="FSS" style="background: var(--color-3);">FSS: 0.69%</td>
+                        <td id="SFS"></td>
+                        <td id="CCS"></td>
+                        <td id="DPS"></td>
+                        <td id="LSS"></td>
+                        <td id="HSS"></td>
+                        <td id="WPS"></td>
+                        <td id="FSS"></td>
+                        <td id="FWPS"></td>
                     </tr>
                     <tr>
                         <td>TRIGRAMS</td>
-                        <td id="ALT" style="background: var(--color-4);">ALT: 28.25%</td>
-                        <td id="ROL" style="background: var(--color-2);">ROL: 43.82%</td>
-                        <td id="ONE" style="background: var(--color-3);">ONE: 2.54%</td>
-                        <td id="RED" style="background: var(--color-1);">RED: 6.84%</td>
+                        <td id="ALT" colspan="2"></td>
+                        <td id="ROL" colspan="2"></td>
+                        <td id="ONE" colspan="2"></td>
+                        <td id="RED" colspan="2"></td>
                     </tr>
                 </tbody>       
             </table> 
-            <table id="use" hidden>
+        </div>
+        <div class="box center">
+            <table id="use">
                 <tbody>
                     <tr>
                         <td>STRONG</td>
-                        <td id="LI" style="background: var(--color-1);">LI: 18.67%</td>
-                        <td id="LM" style="background: var(--color-4);">LM: 10.11%</td>
-                        <td id="RI" style="background: var(--color-1);">RI: 19.85%</td>
-                        <td id="RM" style="background: var(--color-2);">RM: 16.78%</td>
+                        <td></td>
+                        <td></td>
+                        <td id="LM"></td>
+                        <td id="LI"></td>
+                        <td id="RI"></td>
+                        <td id="RM"></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td>WEAK</td>
-                        <td id="LR">LR: 7.78%</td>
-                        <td id="LP" style="background: var(--color-3);">LP: 7.57%</td>
-                        <td id="RR" style="background: var(--color-4);">RR: 10.39%</td>
-                        <td id="RP" style="background: var(--color-2);">RP: 8.86%</td>
+                        <td id="LP"></td>
+                        <td id="LR"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td id="RR"></td>
+                        <td id="RP"></td>
                     </tr>
                     <tr>
                         <td>TOTAL</td>
-                        <td id="LH" colspan="2" style="background: var(--color-4);">LH: 44.12%</td>
-                        <td id="RH" colspan="2" style="background: var(--color-1);">RH: 55.88%</td>
+                        <td id="LH" colspan="4"></td>
+                        <td id="RH" colspan="4"></td>
                     </tr>
                 </tbody>             
             </table> 
         </div>
-        <div id="toolbar">
-            <button class="button" onclick="toggle()">
-                <i class="fa-solid fa-chart-simple"></i>
-                Stats
-            </button>
-            <button class="button" onclick="mirror()">
-                <i class="fa-solid fa-arrow-right-arrow-left"></i>
-                Mirror
-            </button>
-            <button class="button" onclick="board()">
-                <i class="fa-solid fa-keyboard"></i>
-                Board
-            </button>
-            <button class="button" onclick="settings()">
-                <i class="fa-solid fa-gear"></i>
-            </button>
-            <button class="button" onclick="info()">
-                <i class="fa-brands fa-github"></i>
-            </button>
+        <div class="box center">
+            <span class="heading">Problematic prefixes</span>
+            <div id="prefixes" class="morphemes"></div>
         </div>
-    </div>
-    <input id="editor" hidden=true>
-    <div id="pop-ups" class="center" hidden>
-        <div id="settings">
-            <div>
-                <hi>Layout Editor</hi>
-                <textarea id="matrix"></textarea>
-                <div>
-                    <button onclick="copy()">Copy</button>
-                </div>
-            </div>
+        <div class="box center">
+            <span class="heading">Problematic endings</span>
+            <div id="endings" class="morphemes"></div>
         </div>
     </div>
 </div>

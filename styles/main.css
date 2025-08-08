@@ -1,6 +1,4 @@
-@import 'grid.css';
-@import 'key.css';
-@import 'search.css';
+@import 'kbd.css';
 @import 'table.css';
 
 * { 
@@ -8,16 +6,22 @@
     -webkit-box-sizing: border-box; 
     box-sizing: border-box; 
 
-    font-family: "Fira Code", monospace;
+    font-family: "Iosevka Web", "PT Mono", monospace;
+    font-weight: 200;
     color: var(--color-bg);
 }
 
 :root {
-    --color-box: rgb(62, 62, 62);
-    --color-bg: rgb(39, 39, 39);
+    --color-box: #444750;
+    --color-bg: #2B2D30;
     --color-light: rgb(232, 232, 232);
     
     --size: min(1vw, 1.25vh);
+    --color-5: #83A0A0;
+    --color-4: #4C5F6B;
+    --color-3: #83A0A0;
+    --color-2: #BCA0BC;
+    --color-1: #F9B9F2;
 }
 
 body {
@@ -36,31 +40,39 @@ body {
     justify-content: center;
 }
 
-#toolbar {
+#layout-selector {
     display: flex;
-    justify-content: end;
+    justify-content: center;
     padding: 0 calc(var(--size) * 5);
 
     gap: calc(var(--size) / 2);
 }
 
-.button {
+button {
     border: none;
     padding: var(--size);
+    cursor: pointer;
 
     background: var(--color-5);
-    font-size: calc(var(--size) * 2);
+    font-size: 1.5rem;
     border-radius: calc(var(--size) * .6);
 
-    transition: background-color 200ms;
+    transition: background-color 200ms, font-weight 200ms;
 }
 
-.button:hover {
-    background: var(--color-3);
+button:hover {
+    background: var(--color-2);
 }
 
-.button:active {
-    background: var(--color-1)
+button:active {
+    background: var(--color-1);
+    font-weight: 800;
+    transition: background-color 200ms, font-weight 200ms;
+}
+
+button[aria-checked="true"] {
+    font-weight: 800;
+    background: var(--color-1);
 }
 
 .box {
@@ -68,6 +80,10 @@ body {
 
     background: var(--color-box);
     border-radius: calc(var(--size) * .6);
+}
+
+.box:has(.heading) {
+    padding-inline: calc(var(--size) * 2);
 }
 
 .center {
@@ -87,41 +103,55 @@ body {
     background: rgba(0, 0, 0, 0.171);
 }
 
-#settings {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    padding: calc(var(--size) * 3);
-    gap: calc(var(--size) * 2);
+#stat-tooltip {
+    background: var(--color-box);
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 6px;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 1000;
+}
 
-    border: calc(var(--size) * 1) solid var(--color-1);
-    border-radius: calc(var(--size) * .6);
+#stat-tooltip > div {
+    border: 1px solid var(--color-bg);
     background: var(--color-light);
-
-    opacity: 95%;
+    padding: 0.5rem;
+    border-radius: 6px;
+    font-weight: 800;
 }
 
-textarea {
-    width: 100%;
-    height: calc(var(--size) * 10);
-
-    resize: none;
+.morphemes {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: calc(var(--size) * 1);
 }
 
-#editor {
-    position: absolute;
-    top: 0;
-    
-    border: none;
-    aspect-ratio: 1;
-    
-    background: none;
-    font-size: calc(var(--size) * 3);
-    text-align: center;
-    
-    outline: none;
+.morpheme-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 0.5rem;
 }
 
-[hidden] {
-    display: none !important;
+.morpheme {
+    border: 1px solid var(--color-bg);
+    background: var(--color-light);
+    padding: 0.5rem;
+    border-radius: 6px;
+    font-weight: 800;
+}
+
+.morpheme-type {
+    color: white;
+    font-size: 0.8rem;
+}
+
+.heading {
+    color: var(--color-1);
+    font-weight: bold;
+    font-size: 1.5rem;
 }

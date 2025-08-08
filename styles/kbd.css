@@ -1,0 +1,63 @@
+:root {
+    --rows: 3; 
+    --cols: 12;
+    --pad: calc((100vw - 125vh) / 2);
+}
+
+#kbd {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem auto;
+    padding: 0px;
+    align-items: center;
+    gap: 6px;
+
+    background: var(--color-box);
+}
+
+.keyboard-row {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+}
+.keyboard-row:first-child {
+    margin-left: -4.5rem;
+}
+.keyboard-row:nth-child(2) {
+    margin-left: 5rem;
+}
+
+.key {
+    width: 48px;
+    min-width: 48px;
+    height: 48px;
+    border-radius: 10%;
+    
+    background: var(--color-5);
+    font-size: 1.5rem;
+
+    box-shadow: 2px 2px black;
+    user-select: none;
+    font-weight: 200;
+
+    transition: 
+        background-color 200ms,
+        filter 100ms,
+        font-weight 0.1s;
+}
+
+.homing {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 2px;
+}
+
+.empty {
+    width: 100%;
+    aspect-ratio: 1;
+}
+
+.key.active {
+    filter: brightness(120%);
+    font-weight: 800;
+}
