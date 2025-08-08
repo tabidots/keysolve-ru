@@ -155,3 +155,16 @@ button[aria-checked="true"] {
     font-weight: bold;
     font-size: 1.5rem;
 }
+
+p {
+    color: white;
+}
+
+a {
+    color: var(--color-5);
+    transition: font-weight 100ms;
+}
+a:hover {
+    color: var(--color-1);
+    font-weight: bold;
+}
